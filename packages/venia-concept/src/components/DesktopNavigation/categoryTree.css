@@ -1,0 +1,33 @@
+.root {
+    background-color: #7c7b7b;
+}
+
+.tree {
+    max-width: 1280px;
+    margin: auto;
+}
+
+.leaf {
+}
+
+li {
+    flex: 1 1 100%;
+    background-image: linear-gradient(to bottom, transparent 50%, #a2d39c 50%, #a2d39c 95%, #7cc576 95%);
+    background-size: 100% 200%;
+    background-position: top center;
+    color: #666;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.25s ease-in-out;
+}
+
+.branch {
+    display: flex;
+    width: 100%;
+}
+
+.inactive {
+    position: fixed;
+    visibility: hidden;
+}

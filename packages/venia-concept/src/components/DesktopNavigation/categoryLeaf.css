@@ -1,0 +1,21 @@
+.root {
+    padding: 1rem 2rem;
+    color: white;
+    display: block;
+    padding: 1rem 0;
+    transition: all 0.25s ease-in-out;
+}
+
+.inactive {
+    position: fixed;
+    visibility: hidden;
+}
+
+.text {
+
+}
+
+.button,
+.link {
+    composes: root;
+}

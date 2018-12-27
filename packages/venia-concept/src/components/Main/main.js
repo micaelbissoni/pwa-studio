@@ -4,6 +4,7 @@ import { bool, shape, string } from 'prop-types';
 import classify from 'src/classify';
 import Footer from 'src/components/Footer';
 import Header from 'src/components/Header';
+import DesktopHeader from 'src/components/DesktopHeader';
 import defaultClasses from './main.css';
 
 class Main extends Component {
@@ -17,6 +18,25 @@ class Main extends Component {
         isMasked: bool
     };
 
+    constructor() {
+        super();
+        this.state = {
+          width: window.innerWidth,
+        };
+    }
+
+    componentWillMount() {
+        window.addEventListener('resize', this.handleWindowSizeChange);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleWindowSizeChange);
+    }
+
+    handleWindowSizeChange = () => {
+        this.setState({ width: window.innerWidth });
+    };
+      
     get classes() {
         const { classes, isMasked } = this.props;
         const suffix = isMasked ? '_masked' : '';
@@ -28,9 +48,15 @@ class Main extends Component {
     }
 
     render() {
+
         const { classes, props } = this;
         const { children } = props;
 
+        const { width } = this.state;
+        const isMobile = width <= 500;
+        // the rest is the same...
+      
+        if (isMobile) {
         return (
             <main className={classes.root}>
                 <Header />
@@ -38,6 +64,15 @@ class Main extends Component {
                 <Footer />
             </main>
         );
+        }else{
+            return (
+                <main className={classes.root}>
+                    <DesktopHeader />
+                    <article className={classes.page}>{children}</article>
+                    <Footer />
+                </main>
+            );
+        }
     }
 }
 
