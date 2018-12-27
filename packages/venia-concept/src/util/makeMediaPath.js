@@ -16,7 +16,7 @@ export function makePathPrepender(prefix) {
     };
 }
 
-const mediaPath = '/media/catalog/';
+const mediaPath = 'pub/media/catalog/';
 
 export const makeProductMediaPath = makePathPrepender(mediaPath + '/product/');
 
